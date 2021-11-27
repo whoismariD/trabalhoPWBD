@@ -49,7 +49,7 @@ $stmt->execute();
                         <tr>
                             <td><?=$cadastro['codigo'] ?></td>
                             <td><?=$cadastro['titulo'] ?></td>
-                            <td><?=($cadastro['autor'] ?></td>
+                            <td><?=$cadastro['autor'] ?></td>
                             <td><?=dateConvert($cadastro['anoLancamento']) ?></td>
                                 <a href="form-edit.php?id=<?=$cadastro['id'] ?>">Editar</a>
                                 <a href="delete.php?id=<?=$cadastro['id'] ?>" 
