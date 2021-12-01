@@ -17,7 +17,7 @@ if (empty($codigo) || empty($titulo) || empty($autor) || empty($anoLancamento))
 $isoDate = dateConvert($anoLancamento);
 // atualiza o banco
 $PDO = db_connect();
-$sql = "UPDATE cadastro SET codigo = :codigo, titulo = :titulo,"
+$sql = "UPDATE livros SET codigo = :codigo, titulo = :titulo,"
         . " autor = :autor, anoLancamento = :anoLancamento WHERE id = :id";
 $stmt = $PDO->prepare($sql);
 $stmt->bindParam(':codigo', $codigo);

@@ -7,11 +7,10 @@ $PDO = db_connect();
 // A biblioteca PDO possui o método rowCount(), 
 // mas ele pode ser impreciso.
 // É recomendável usar a função COUNT da SQL
-$sql_count = "SELECT COUNT(*) AS total FROM cadastro ORDER BY name ASC";
+$sql_count = "SELECT COUNT(*) AS total FROM livros";
 
 // SQL para selecionar os registros
-$sql = "SELECT id, codigo, titulo, autor, anoLancamento "
-        . "FROM cadastro ORDER BY name ASC";
+$sql = "SELECT id, codigo, titulo, autor, anoLancamento FROM livros";
 
 // conta o total de registros
 $stmt_count = $PDO->prepare($sql_count);
@@ -45,17 +44,18 @@ $stmt->execute();
                     </tr>
                 </thead>
                 <tbody>
-                    <?php while ($cadastro = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
+                    <?php while ($livros = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
                         <tr>
-                            <td><?=$cadastro['codigo'] ?></td>
-                            <td><?=$cadastro['titulo'] ?></td>
-                            <td><?=$cadastro['autor'] ?></td>
-                            <td><?=dateConvert($cadastro['anoLancamento']) ?></td>
-                                <a href="form-edit.php?id=<?=$cadastro['id'] ?>">Editar</a>
-                                <a href="delete.php?id=<?=$cadastro['id'] ?>" 
-                                   onclick="return confirm('Tem certeza de que deseja remover?');">
-                                    Remover
-                                </a>
+                            <td><?=$livros['codigo'] ?></td>
+                            <td><?=$livros['titulo'] ?></td>
+                            <td><?=$livros['autor'] ?></td>
+                            <td><?=dateConvert($livros['anoLancamento']) ?></td>
+                                <td>
+                                    <a href="form-edit.php?id=<?=$livros['id'] ?>">Editar</a>
+                                    <a href="delete.php?id=<?=$livros['id'] ?>" 
+                                    onclick="return confirm('Tem certeza de que deseja remover?');">
+                                        Remover
+                                    </a>
                             </td>
                         </tr>
                     <?php endwhile; ?>

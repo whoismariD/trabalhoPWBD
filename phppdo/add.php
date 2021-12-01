@@ -18,7 +18,7 @@ if (empty($codigo) || empty($titulo) || empty($autor) || empty($anoLancamento))
 $isoDate = dateConvert($anoLancamento);
 // insere no banco
 $PDO = db_connect();
-$sql = "INSERT INTO cadastro(codigo, titulo, autor, anoLancamento) VALUES(:codigo, :titulo, :autor, :anoLancamento)";
+$sql = "INSERT INTO livros(codigo, titulo, autor, anoLancamento) VALUES(:codigo, :titulo, :autor, :anoLancamento)";
 $stmt = $PDO->prepare($sql);
 $stmt->bindParam(':codigo', $codigo);
 $stmt->bindParam(':titulo', $titulo);
